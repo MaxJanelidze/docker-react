@@ -1,0 +1,12 @@
+sudo: required
+services:
+  - docker
+
+notifications:
+  email: false
+
+before_install:
+  - docker build -t kvaksa/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run kvaksa/docker-reac npm run test -- --coverage
